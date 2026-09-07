@@ -1,3 +1,16 @@
+<div
+  data-react-component="lookbook"
+  data-section-id="{{ section.id }}"
+  data-lookbook-handle="{% if section.settings.lookbook != blank %}{{ section.settings.lookbook }}{% endif %}"
+  data-heading="{{ section.settings.heading | escape }}"
+  data-description="{{ section.settings.description | escape }}"
+  data-products-per-row="{{ section.settings.products_per_row }}"
+  data-show-price="{{ section.settings.show_price }}"
+  data-show-compare-at-price="{{ section.settings.show_compare_at_price }}"
+  data-color-scheme="{{ section.settings.color_scheme }}"
+  data-country="{{ localization.country.iso_code }}"
+></div>
+
 {% schema %}
 {
   "name": "Lookbook",
