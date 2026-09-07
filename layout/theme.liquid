@@ -63,7 +63,7 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <script type="module" src="{{ 'react-app.js' | asset_url }}" defer="defer"></script>
+    
 
     {{ content_for_header }}
 
@@ -321,6 +321,9 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+    <script type="module" src="{{ 'react-app.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
