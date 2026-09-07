@@ -1,3 +1,14 @@
+<div
+  data-react-component="product-lookbook"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-products-per-row="{{ section.settings.products_per_row }}"
+  data-show-price="{{ section.settings.show_price }}"
+  data-show-compare-at-price="{{ section.settings.show_compare_at_price }}"
+  data-color-scheme="{{ section.settings.color_scheme }}"
+  data-country="{{ localization.country.iso_code }}"
+></div>
+
 {% schema %}
 {
   "name": "Product Lookbook",
@@ -46,6 +57,9 @@
       "default": "scheme-1"
     }
   ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
   "presets": [
     {
       "name": "Product Lookbook"
