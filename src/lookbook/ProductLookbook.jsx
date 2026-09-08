@@ -135,22 +135,24 @@ function ProductLookbook({
             className={`lookbook lookbook--${colorScheme}`}
           >
             <div className="lookbook__container">
-              <div className="lookbook__header">
-                {title && (
-                  <h2 className="lookbook__heading">
-                    {title}
-                  </h2>
-                )}
+              {(title || description) && (
+                <div className="lookbook__header">
+                  {title && (
+                    <h2 className="lookbook__heading">
+                      {title}
+                    </h2>
+                  )}
 
-                {description && (
-                  <div
-                    className="lookbook__description"
-                    dangerouslySetInnerHTML={{
-                      __html: description,
-                    }}
-                  />
-                )}
-              </div>
+                  {description && (
+                    <div
+                      className="lookbook__description"
+                      dangerouslySetInnerHTML={{
+                        __html: description,
+                      }}
+                    />
+                  )}
+                </div>
+              )}
 
               <div
                 className="lookbook__grid"
