@@ -169,11 +169,27 @@ export async function getProductLookbooks(productId, country) {
   // console.log('Current product GID:', productGid);
   console.log('Available lookbooks:', lookbooks.length);
 
+  // const matchingLookbooks = lookbooks.filter((lookbook) => {
+  //   const products = lookbook.products?.references?.nodes || [];
+  //   return products.some((product) => product.id === productGid);
+  // });
+  
+  // return matchingLookbooks.slice(0, 2);
+
+  // instead of returning 2 ascending lookbook, this will return 2 random lookbook
   const matchingLookbooks = lookbooks.filter((lookbook) => {
     const products = lookbook.products?.references?.nodes || [];
-
     return products.some((product) => product.id === productGid);
   });
+  const shuffledLookbooks = [...matchingLookbooks];
 
-  return matchingLookbooks.slice(0, 2);
+  for (let i = shuffledLookbooks.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledLookbooks[i], shuffledLookbooks[j]] = [
+      shuffledLookbooks[j],
+      shuffledLookbooks[i],
+    ];
+  }
+
+  return shuffledLookbooks.slice(0, 2);
 }
