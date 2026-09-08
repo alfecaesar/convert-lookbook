@@ -39,7 +39,7 @@ function richTextToHtml(value) {
           return `<em>${children}</em>`;
 
         case 'link':
-          return `<a href="${node.url || '#'}">${children}</a>`;
+          return `<a href = "${node.url || '#'}">${children}</a>`;
 
         case 'list':
           return `<ul>${children}</ul>`;

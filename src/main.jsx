@@ -33,13 +33,11 @@ function mountComponent(element) {
   const Component = components[componentName];
 
   if (!Component) {
-    // console.warn(`Unknown React component: ${componentName}`);
+
     return;
   }
 
   const props = getProps(element);
-
-  // console.log(`Mounting React component: ${componentName}`, props);
 
   const root = createRoot(element);
 

@@ -39,7 +39,7 @@ function richTextToHtml(value) {
           return `<em>${children}</em>`;
 
         case 'link':
-          return `<a href="${node.url || '#'}">${children}</a>`;
+          return `<a href = "${node.url || '#'}">${children}</a>`;
 
         case 'list':
           return `<ul>${children}</ul>`;
@@ -121,7 +121,7 @@ function ProductLookbook({
   }
 
   return (
-    <div className="product-lookbooks">
+    <div className = "product-lookbooks">
       {lookbooks.map((lookbook) => {
         const products = lookbook.products?.references?.nodes || [];
         const title = lookbook.title?.value || lookbook.handle;
@@ -146,7 +146,7 @@ function ProductLookbook({
                   {description && (
                     <div
                       className="lookbook__description"
-                      dangerouslySetInnerHTML={{
+                      dangerouslySetInnerHTML = {{
                         __html: description,
                       }}
                     />
@@ -157,7 +157,7 @@ function ProductLookbook({
               <div
                 className="lookbook__grid"
                 style={{
-                  '--lookbook-columns': productsPerRow,
+                  '--lookbook-columns':productsPerRow,
                 }}
               >
                 {products.map((product) => (
