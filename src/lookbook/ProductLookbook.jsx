@@ -93,7 +93,7 @@ function ProductLookbook({
           country
         );
 
-        console.log('PRODUCT LOOKBOOKS:', data);
+        // console.log('Lookbooks:', data);
 
         setLookbooks(data);
       } catch (error) {

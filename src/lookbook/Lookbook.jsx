@@ -73,7 +73,7 @@ function Lookbook({
   colorScheme,
   country,
 }) {
-  console.log('LOOKBOOK COMPONENT PROPS:', {
+  console.log('Lookbook Component Props:', {
     lookbookHandle,
     country,
   });
@@ -83,23 +83,23 @@ function Lookbook({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('LOOKBOOK USE EFFECT:', {
+    /*console.log('Lookbook use effect:', {
       lookbookHandle,
       country,
-    });
+    });*/
 
     if (!lookbookHandle) {
-      console.warn('LOOKBOOK HANDLE IS EMPTY');
+      // console.warn('Lookbook handle is empty');
       setLoading(false);
       return;
     }
 
     async function loadLookbook() {
       try {
-        console.log('CALLING getLookbook:', {
+        /*console.log('getLookbook:', {
           handle: lookbookHandle,
           country,
-        });
+        });*/
 
         setLoading(true);
         setError(null);
@@ -109,11 +109,11 @@ function Lookbook({
           country
         );
 
-        console.log('LOOKBOOK API RESPONSE:', data);
+        // console.log('Lookbook API data:', data);
 
         setLookbook(data);
       } catch (error) {
-        console.error('LOOKBOOK API ERROR:', error);
+        console.error('Loolbook API error:', error);
         setError(error);
       } finally {
         setLoading(false);

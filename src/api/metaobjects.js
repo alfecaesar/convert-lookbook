@@ -79,7 +79,7 @@ export async function getLookbook(handle, country) {
     country,
   });
 
-  console.log('Lookbook API response:', data);
+  // console.log('Lookbook API response:', data);
 
   return data.metaobject;
 }
@@ -167,7 +167,7 @@ export async function getProductLookbooks(productId, country) {
     : `gid://shopify/Product/${productId}`;
 
   // console.log('Current product GID:', productGid);
-  console.log('Available lookbooks:', lookbooks.length);
+  // console.log('Available lookbooks:', lookbooks.length);
 
   // const matchingLookbooks = lookbooks.filter((lookbook) => {
   //   const products = lookbook.products?.references?.nodes || [];
