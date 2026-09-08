@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Lookbook from './features/lookbook/Lookbook';
-import ProductLookbook from './features/lookbook/ProductLookbook';
+import Lookbook from './lookbook/Lookbook';
+import ProductLookbook from './lookbook/ProductLookbook';
 
 const components = {
   lookbook: Lookbook,
@@ -33,13 +33,13 @@ function mountComponent(element) {
   const Component = components[componentName];
 
   if (!Component) {
-    console.warn(`Unknown React component: ${componentName}`);
+    // console.warn(`Unknown React component: ${componentName}`);
     return;
   }
 
   const props = getProps(element);
 
-  console.log(`Mounting React component: ${componentName}`, props);
+  // console.log(`Mounting React component: ${componentName}`, props);
 
   const root = createRoot(element);
 

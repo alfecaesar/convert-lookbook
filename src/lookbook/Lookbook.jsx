@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import LookbookCard from './LookbookCard';
-import { getLookbook } from '../../api/storefront/metaobjects';
+import { getLookbook } from '../api/metaobjects';
 
 import './lookbook.css';
 
