@@ -52,13 +52,13 @@
       "type": "lookbook",
       "name": "Lookbook",
       "settings": {
-        "lookbook": "",
+        "lookbook": "lookbook-b",
         "heading": "Lookbook",
         "description": "<p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis rhoncus rhoncus ligula sit amet dapibus. Vivamus quis dolor ante. Donec ante magna, consequat sit amet mauris consectetur, placerat consequat arcu. In neque sem, tincidunt in ex et, mattis efficitur augue. Proin congue sit amet ex non ultricies.</p>",
-        "products_per_row": 4,
+        "products_per_row": 3,
         "show_price": true,
         "show_compare_at_price": true,
-        "color_scheme": ""
+        "color_scheme": "scheme-1"
       }
     }
   },
