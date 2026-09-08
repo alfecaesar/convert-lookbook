@@ -131,21 +131,21 @@ function ProductLookbook({
 
         return (
           <section
-            key={lookbook.id}
-            className={`lookbook lookbook--${colorScheme}`}
+            key = {lookbook.id}
+            className = {`lookbook lookbook--${colorScheme}`}
           >
-            <div className="lookbook__container">
+            <div className = "lookbook__container">
               {(title || description) && (
-                <div className="lookbook__header">
+                <div className = "lookbook__header">
                   {title && (
-                    <h2 className="lookbook__heading">
+                    <h2 className = "lookbook__heading">
                       {title}
                     </h2>
                   )}
 
                   {description && (
                     <div
-                      className="lookbook__description"
+                      className = "lookbook__description"
                       dangerouslySetInnerHTML = {{
                         __html: description,
                       }}
@@ -155,17 +155,17 @@ function ProductLookbook({
               )}
 
               <div
-                className="lookbook__grid"
-                style={{
+                className = "lookbook__grid"
+                style = {{
                   '--lookbook-columns':productsPerRow,
                 }}
               >
                 {products.map((product) => (
                   <LookbookCard
-                    key={product.id}
-                    product={product}
-                    showPrice={showPrice}
-                    showCompareAtPrice={showCompareAtPrice}
+                    key = {product.id}
+                    product = {product}
+                    showPrice = {showPrice}
+                    showCompareAtPrice = {showCompareAtPrice}
                   />
                 ))}
               </div>

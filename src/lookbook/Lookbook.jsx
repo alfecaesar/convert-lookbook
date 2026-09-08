@@ -127,7 +127,7 @@ function Lookbook({
     return (
       <section className="lookbook">
         <div className="lookbook__container">
-          Loading lookbook...
+          Loading...
         </div>
       </section>
     );
@@ -137,7 +137,7 @@ function Lookbook({
     return (
       <section className="lookbook">
         <div className="lookbook__container">
-          Unable to load this lookbook.
+          Unable to load lookbook
         </div>
       </section>
     );

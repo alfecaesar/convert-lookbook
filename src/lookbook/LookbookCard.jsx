@@ -33,7 +33,7 @@ function LookbookCard({
 
   return (
     <article className="lookbook-card">
-      <a href={product.onlineStoreUrl || `/products/${product.handle}`} className = "lookbook-card__image" >
+      <a href={product.onlineStoreUrl || `/products/${product.handle}`} className= "lookbook-card__image" >
         {product.featuredImage && (
           <img
             src={product.featuredImage.url}

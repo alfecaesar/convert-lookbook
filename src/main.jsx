@@ -4,68 +4,72 @@ import { createRoot } from 'react-dom/client';
 import Lookbook from './lookbook/Lookbook';
 import ProductLookbook from './lookbook/ProductLookbook';
 
-const components = {
-  lookbook: Lookbook,
+const COMPONENT_REGISTRY = {
+  'lookbook': Lookbook,
   'product-lookbook': ProductLookbook,
 };
 
 function getProps(element) {
+  const { dataset } = element;
+  
   return {
-    sectionId: element.dataset.sectionId || '',
-    lookbookHandle: element.dataset.lookbookHandle || '',
-    productId: element.dataset.productId || '',
-    heading: element.dataset.heading || '',
-    description: element.dataset.description || '',
-    productsPerRow: Number(element.dataset.productsPerRow || 4),
-    showPrice: element.dataset.showPrice === 'true',
-    showCompareAtPrice: element.dataset.showCompareAtPrice === 'true',
-    colorScheme: element.dataset.colorScheme || 'scheme-1',
-    country: element.dataset.country || 'AU',
+    sectionId: dataset.sectionId || '',
+    lookbookHandle: dataset.lookbookHandle || '',
+    productId: dataset.productId || '',
+    heading: dataset.heading || '',
+    description: dataset.description || '',
+    productsPerRow: parseInt(dataset.productsPerRow, 10) || 4,
+    showPrice: dataset.showPrice === 'true',
+    showCompareAtPrice: dataset.showCompareAtPrice === 'true',
+    colorScheme: dataset.colorScheme || 'scheme-1',
+    country: dataset.country || 'AU',
   };
 }
 
+// mounts a react component 
 function mountComponent(element) {
   if (element.dataset.reactMounted === 'true') {
     return;
   }
 
   const componentName = element.dataset.reactComponent;
-  const Component = components[componentName];
+  const Component = COMPONENT_REGISTRY[componentName];
 
   if (!Component) {
-
+    console.warn(`[ReactMount] Component "${componentName}" not found in registry.`);
     return;
   }
 
-  const props = getProps(element);
-
-  const root = createRoot(element);
-
-  root.render(<Component {...props} />);
-
-  element._reactRoot = root;
-  element.dataset.reactMounted = 'true';
+  try {
+    const props = getProps(element);
+    const root = createRoot(element);
+  
+    element._reactRoot = root;
+    root.render(<Component {...props} />);
+    element.dataset.reactMounted = 'true';
+  } catch (error) {
+    console.error(`[ReactMount] Failed to mount ${componentName}:`, error);
+  }
 }
 
 function unmountComponent(element) {
-  if (!element._reactRoot) {
-    return;
+  if (element._reactRoot) {
+    element._reactRoot.unmount();
+    delete element._reactRoot;
+    delete element.dataset.reactMounted;
   }
-
-  element._reactRoot.unmount();
-
-  delete element._reactRoot;
-  delete element.dataset.reactMounted;
 }
 
+// scans for component
 function mountComponents(root = document) {
-  root
-    .querySelectorAll('[data-react-component]')
-    .forEach(mountComponent);
+  const elements = root.querySelectorAll('[data-react-component]');
+  elements.forEach(mountComponent);
 }
 
-mountComponents();
+// initial mount
+document.addEventListener('DOMContentLoaded', () => mountComponents());
 
+// shopify theme editor support
 document.addEventListener('shopify:section:load', (event) => {
   mountComponents(event.target);
 });
